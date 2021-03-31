@@ -46,6 +46,13 @@ for reg_value = reg_params
     accuracy(count) = 1 - sum(y_predict ~= y_test)/N_test;
     %find AUC
     [X,Y,T,AUC_VAL] = perfcurve(y_test, scores, 1);
+    if reg_value == .1
+        plot(X,Y)
+        xlabel('False positive rate') 
+        ylabel('True positive rate')
+        title('ROC for Classification by Logistic Regression')        
+    end
+        
     AUC(count) = AUC_VAL ;
     count = count + 1 ;
 end
